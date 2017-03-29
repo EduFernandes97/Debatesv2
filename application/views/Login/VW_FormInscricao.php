@@ -1,35 +1,71 @@
-<table border="0">
+<html>
+    <head>
+          <script src="<?php echo base_url()?>JavaScript/jquery.js" type="text/javascript"></script>
+            <script src="<?php echo base_url()?>JavaScript/JavaScriptPaginaInicial.js" type="text/javascript"></script>
+    </head>
+    <body>
 
-<?php
-$this->load->helper('url');
-$this->load->library('form_validation');
+      <h1>Registar</h1>
 
-echo form_open("PaginaInicial/Inscrever");?>
-  <tr>
-    <td>Primeiro Nome: </td><td><input name="Nome1" type="text"></td>
-  </tr>
-  <tr>
-    <td>Ultimo Nome: </td><td><input name="Nome2" type="text"></td>
-  </tr>
-  <tr>
-    <td>Data Nascimento: </td><td><input name="Data" type="date"></td>
-  </tr>
-  <tr>
-    <td>Sexo: </td>
-    <td>Masculino: <input type="radio" value="M" name="Sexo"></td>
-    <td>Feminino: <input type="radio" value="F" name="Sexo"></td>
+      <table border="0">
 
-  </tr>
-  <tr>
-    <td>Password: </td><td><input name="PalavraChave" type="password"></td>
-  </tr>
-  <tr>
-    <td>Email: </td><td><input name="Email" type="email"></td>
-  </tr>
-  <tr>
-    <td><input type="submit"></td>
-  </tr>
+      <?php
+      $this->load->helper('url');
+      $this->load->library('form_validation');
+
+      echo form_open("PaginaInicial/Inscrever");?>
+        <tr>
+         <td>Primeiro Nome: </td><td><input name="Nome1" type="text" minlength="2" maxlength="20" required></td>
+      	<td>Ultimo Nome: </td><td><input name="Nome2" type="text" required></td>
+        </tr>
+        <tr>
+          <td>Email: </td><td><input name="Email" type="email" required></td>
+        </tr>
+		 <tr>
+          <td>Password: </td><td><input name="PalavraChave" type="password" minlength="8" maxlength="40" required></td>
+        </tr>
+        <tr>
+          <td>Sexo: </td>
+          <td>Masculino: <input type="radio" value="M" name="Sexo" checked></td>
+          <td>Feminino: <input type="radio" value="F" name="Sexo"></td>
+        </tr>
+		<tr>
+          <td>Data Nascimento: </td><td><input name="Data" type="date" required></td>
+        </tr>
+         <tr>
+          <td>Telefone: </td><td><input name="Telefone" type="tel"></td>
+        </tr>
+		<tr>
+          <td>Cidade </td><td><input name="Cidade" type="text"></td>
+		  <td>Pais </td><td><input name="Pais" type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Registar"></td>
+        </tr>
 
 
 
-</form>
+      </form>
+      </table>
+
+
+      <h1>Login</h1>
+      <table border="0">
+      <?php
+      echo form_open("PaginaInicial/Login");?>
+
+      <tr>
+      	<td>Email: </td><td><input name="Email" type="email" required></td>
+      </tr>
+      <tr>
+      	<td>Password </td><td><input name="PalavraChave" type="password" required></td>
+      </tr>
+        <tr>
+          <td><input type="submit" value="Login"></td>
+        </tr>
+
+
+      </form>
+      </table>
+    </body>
+</html>
