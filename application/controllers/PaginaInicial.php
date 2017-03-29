@@ -28,12 +28,12 @@ class PaginaInicial extends CI_Controller {
 
 		$this->load->model('PaginaInicialModel');
 		$verifica = $this->PaginaInicialModel->VerificaEmail($email);
-
+		echo json_encode($verifica->NEmail);/*
 		if($verifica[0]->NEmail != 0)
 			echo json_encode(1);
 		else {
 			echo json_encode(0);
-		}
+		}*/
 
 	}
 
@@ -43,7 +43,7 @@ class PaginaInicial extends CI_Controller {
 		$Apelido = $this->input->post("Nome2");
 		$Data = $this->input->post("Data");
 		$Sexo = $this->input->post("Sexo");
-		$Email = $this->input->post("Email");
+		$Email = $this->input->post("EmailRegisto");
 		$Pass = $this->input->post("PalavraChave");
 
 		$this->load->model('PaginaInicialModel');
@@ -60,7 +60,7 @@ class PaginaInicial extends CI_Controller {
 
 	public function Login()
 	{
-		$Email=$this->input->post('Email');
+		$Email=$this->input->post('EmailLogin');
 		$Pass=$this->input->post('PalavraChave');
 		$this->load->model('PaginaInicialModel');
 

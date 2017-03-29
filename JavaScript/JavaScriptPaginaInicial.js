@@ -1,15 +1,15 @@
 $(document).ready(function(){
-  $('input[name=Email]').blur(function(){
-    var email = $('input[name=Email]').val();
+  $("input[name='EmailRegisto']").blur(function(){
+
+    var email = $("input[name='EmailRegisto']").val();
+
       $.get("index.php/PaginaInicial/ValidarEmail?email="+email, function(data,status){
         var arr = $.parseJSON(data);
-
-
-        console.log(arr);
-        if(arr.lenght == 1){//pode registar
-                alert("1");
+console.log(arr);
+        if(arr == 0){//pode registar
+          $("input[name='EmailRegisto']").css("border-color","green");
         }else{//nao pode registar
-              alert("2");
+          $("input[name='EmailRegisto']").css("border-color","red");
         }
       })
 

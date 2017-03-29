@@ -13,13 +13,15 @@
       $this->load->helper('url');
       $this->load->library('form_validation');
 
-      echo form_open("PaginaInicial/Inscrever");?>
+      $attributes = array('id' => 'Registo');
+
+      echo form_open_multipart('PaginaInicial/Inscrever', $attributes);?>
         <tr>
          <td>Primeiro Nome: </td><td><input name="Nome1" type="text" minlength="2" maxlength="20" required></td>
       	<td>Ultimo Nome: </td><td><input name="Nome2" type="text" required></td>
         </tr>
         <tr>
-          <td>Email: </td><td><input name="Email" type="email" required></td>
+          <td>Email: </td><td><input name="EmailRegisto" type="email" required></td>
         </tr>
 		 <tr>
           <td>Password: </td><td><input name="PalavraChave" type="password" minlength="8" maxlength="40" required></td>
@@ -55,7 +57,7 @@
       echo form_open("PaginaInicial/Login");?>
 
       <tr>
-      	<td>Email: </td><td><input name="Email" type="email" required></td>
+      	<td>Email: </td><td><input name="EmailLogin" type="email" required></td>
       </tr>
       <tr>
       	<td>Password </td><td><input name="PalavraChave" type="password" required></td>
