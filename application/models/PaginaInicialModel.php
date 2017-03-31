@@ -12,10 +12,8 @@ class PaginaInicialModel extends CI_Model
   function VerificaEmail($email)
   {
     $sql = "SELECT COUNT(*) as NEmail FROM Utilizador WHERE Email = '".$email."';";
-  //  $sql = "SELECT Email FROM utilizador WHERE Email = 'asd'";
 
-
-    return $this->db->query($sql)->row();
+    return $this->db->query($sql)->row()->NEmail;
   }
 
   function InscreverUtilizador($Nome, $Apelido, $Email, $Data, $Sexo, $PalavraChave)
