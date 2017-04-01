@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $("input[name='Email']", "#Registo").blur(function(){
+  $("input[name='EmailRegisto']", "#Registo").blur(function(){
     var sel = $(this);
     var email = sel.val();
 
