@@ -4,14 +4,9 @@ $(document).ready(function(){
     var sel = $(this);
     var email = sel.val();
 
-    var spl = email.split("@");
-    console.log( spl.length);
-    if (spl[0]== "" || spl[1] == "" || spl.length < 2  ){
-      sel.css("border-color","red");
-      return;
-      
-    }
 
+    if (!AvaliaEmail(email, sel))
+      return;
 
 
       $.get("index.php/PaginaInicial/ValidarEmail?email="+email, function(data,status){
@@ -70,6 +65,19 @@ $(document).ready(function(){
 
 
 });
+
+//input: string do email, elemento do input do email (para mudar a cor)
+//output: false -> se email nao valido, true -> se email valido
+function AvaliaEmail(email, sel){
+  var spl = email.split("@");
+  if (spl[0]== "" || spl[1] == "" || spl.length < 2  ){
+    sel.css("border-color","red");
+    return false;
+
+  }
+  return true;
+
+}
 
 function AvaliaPassword(){
   var pass1 = $("input[name=ConfirmarPalavraChave]", "#Registo").val()+String.fromCharCode(e.keyCode || e.which);
