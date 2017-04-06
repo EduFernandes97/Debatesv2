@@ -21,7 +21,7 @@ class PaginaInicialModel extends CI_Model
 
       $sql = "INSERT INTO `utilizador` (`idUtilizador`, `Password`, `DataNascimento`,
         `Sexo`, `DataRegisto`, `Email`, `PrimeiroNome`, `Apelido`, `Telefone`, `Foto`)
-        VALUES (NULL, '".sha1($PalavraChave)."', '".$Data."', '".$Sexo."', '2017-03-22', '".$Email."', '".$Nome."', '".$Apelido."',
+        VALUES (NULL, '".$PalavraChave."', '".$Data."', '".$Sexo."', '2017-03-22', '".$Email."', '".$Nome."', '".$Apelido."',
         NULL, 0)";
 
         return $this->db->query($sql);
@@ -30,8 +30,8 @@ class PaginaInicialModel extends CI_Model
 
   function ValidaLogin($Email, $Pass)
   {
-	$sql="SELECT idUtilizador FROM Utilizador WHERE Email= '".$Email."' AND Password= '".sha1($Pass)."';";
+     $sql="SELECT idUtilizador FROM Utilizador WHERE Email= '".$Email."' AND Password= '".$Pass."';";
 
-	return $this->db->query($sql);
+	   return $this->db->query($sql)->row();
   }
 }

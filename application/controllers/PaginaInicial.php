@@ -13,7 +13,7 @@ class PaginaInicial extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('/Login/VW_FormInscricao.php');
+		$this->load->view('Login/VW_FormInscricao.php');
 	}
 
 	public function ValidarEmail()
@@ -39,6 +39,9 @@ class PaginaInicial extends CI_Controller {
 
 	public function Inscrever()
 	{
+
+	$this->load->library('form_validation');
+
 		$Nome = $this->input->post("Nome1");
 		$Apelido = $this->input->post("Nome2");
 		$Data = $this->input->post("Data");
@@ -49,33 +52,37 @@ class PaginaInicial extends CI_Controller {
 		$this->load->model('PaginaInicialModel');
 
 		$validar = $this->PaginaInicialModel->InscreverUtilizador($Nome, $Apelido, $Email, $Data, $Sexo, $Pass);
-		if($validar == NULL)
+		if($validar == 0)
 		{
-			 echo "Deu Errado";
+			 $this->load->view("Login/VW_FormInscricao.php");
 		}
 		else {
-			echo "Deu certo";
+				redirect("PaginaUtilizador/index");
 		}
+
+
 	}
 
 	public function Login()
 	{
+
+		$this->load->library("session");
+
 		$Email=$this->input->post('Email');
 		$Pass=$this->input->post('PalavraChave');
 		$this->load->model('PaginaInicialModel');
 
 		$validou=$this->PaginaInicialModel->ValidaLogin($Email, $Pass);
 
-		if($validou===NULL)
+		if($validou == 0)
 		{
 			//invalido
-			$this->load->view('PaginaInicial');
+			redirect('PaginaInicial/index');
 		}
 		else
 		{
-			$dados=array('id'=>$validou, 'FezLogin'=>True);
+			$dados = array('Id'=>$validou);
 			$this->session->set_userdata($dados);
-
 			redirect('PaginaUtilizador/index');
 			//valido
 		}
